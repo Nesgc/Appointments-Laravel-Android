@@ -1,7 +1,20 @@
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 const plugin = require('tailwindcss/plugin');
-
+module.exports = {
+    content: [
+      "./resources/**/*.blade.php",
+      "./resources/**/*.js",
+      "./resources/**/*.vue",
+      "./node_modules/flowbite/**/*.js"
+    ],
+    theme: {
+      extend: {},
+    },
+    plugins: [
+        require('flowbite/plugin')
+    ],
+  }
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -70,6 +83,6 @@ export default {
             addVariant('sidebar-expanded', ({ modifySelectors, separator }) => {
                 modifySelectors(({ className }) => `.sidebar-expanded .${e(`sidebar-expanded${separator}${className}`)}`);
             });
-        }),        
+        }),
     ],
 };

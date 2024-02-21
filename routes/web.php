@@ -33,7 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/specialties', [Specialty::class, 'index'])->name('specialties');
-    Route::get('/specialties/create', [Specialty::class, 'create'])->name('specialties');
+    Route::get('/specialties/create', [Specialty::class, 'create'])->name('create');
     Route::get('/specialties/{specialty}/edit', [Specialty::class, 'edit'])->name('specialties');
     Route::post('/specialties', [Specialty::class, 'store'])->name('specialties');
 });

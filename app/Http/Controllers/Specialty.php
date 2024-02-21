@@ -10,4 +10,9 @@ class Specialty extends Controller
     {
         return view('specialties.index');
     }
+
+    public function create()
+    {
+        return view('specialties.create');
+    }
 }
