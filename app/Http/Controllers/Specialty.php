@@ -15,4 +15,14 @@ class Specialty extends Controller
     {
         return view('specialties.create');
     }
+
+    public function store(Request $request)
+    {
+        $specialty = new Specialty;
+        $specialty->name = $request->input('name');
+        $specialty->description = $request->input('description');
+        $specialty->save();
+
+        return redirect('/specialties');
+    }
 }
