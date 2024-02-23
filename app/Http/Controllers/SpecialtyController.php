@@ -32,16 +32,16 @@ class SpecialtyController extends Controller
         return redirect('/specialties');
     }
 
-    public function edit()
+    public function edit(Specialty $specialty)
     {
-        return view('specialties.edit');
+
+        return view('specialties.edit', compact('specialty'));
     }
     public function update(Request $request, Specialty $specialty)
     {
         $rules = ['name' => 'required|min:3', 'description' => 'required'];
         $this->validate($request, $rules);
 
-        $specialty = new Specialty;
         $specialty->name = $request->input('name');
         $specialty->description = $request->input('description');
         $specialty->save();

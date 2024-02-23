@@ -52,17 +52,19 @@
                 </ul>
 
             @endif
-            <form action="{{ url('specialties') }}" method="POST">
+            <form action="{{ url('specialties/' . $specialty->id) }} " method="post">
                 @csrf
+                @method('PUT')
                 <div class="mb-4">
                     <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Specialty Name</label>
                     <input type="text" id="name" name="name" placeholder="Doctor" required
-                        value="{{ old('name') }}"
+                        value="{{ old('name', $specialty->name) }}"
                         class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500 bg-gray-700 text-white">
                 </div>
                 <div class="mb-4">
                     <label for="description" class="block text-gray-300 text-sm font-bold mb-2">Description</label>
                     <input type="text" id="description" name="description" required
+                        value="{{ old('description', $specialty->description) }}"
                         class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500 bg-gray-700 text-white">
                 </div>
 
