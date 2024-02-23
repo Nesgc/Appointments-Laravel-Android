@@ -11,6 +11,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\Specialty;
+use App\Http\Controllers\SpecialtyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +33,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/specialties', [Specialty::class, 'index'])->name('specialties');
-    Route::get('/specialties/create', [Specialty::class, 'create'])->name('create');
-    Route::get('/specialties/{specialty}/edit', [Specialty::class, 'edit'])->name('specialties');
-    Route::post('/specialties', [Specialty::class, 'store'])->name('specialties');
+    Route::get('/specialties', [SpecialtyController::class, 'index'])->name('specialties');
+    Route::get('/specialties/create', [SpecialtyController::class, 'create'])->name('create');
+    Route::get('/specialties/{specialty}/edit', [SpecialtyController::class, 'edit'])->name('specialties');
+    Route::post('/specialties', [SpecialtyController::class, 'store'])->name('specialties');
+    Route::put('/specialties/{specialty}/edit', [SpecialtyController::class, 'update'])->name('specialties');
+    Route::delete('/specialties/{specialty}/edit', [SpecialtyController::class, 'destroy'])->name('specialties');
+
+    //   Route::post('/specialties', 'SpecialtyController@store');
 });
