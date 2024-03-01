@@ -48,4 +48,10 @@ class SpecialtyController extends Controller
 
         return redirect('/specialties');
     }
+
+    public function destroy(Specialty $specialty)
+    {
+        $specialty->delete();
+        return redirect('/specialties');
+    }
 }

@@ -38,7 +38,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/specialties/{specialty}/edit', [SpecialtyController::class, 'edit'])->name('edit');
     Route::post('/specialties', [SpecialtyController::class, 'store'])->name('specialties');
     Route::put('/specialties/{specialty}', [SpecialtyController::class, 'update'])->name('put');
-    Route::delete('/specialties/{specialty}/edit', [SpecialtyController::class, 'destroy'])->name('specialties');
+    Route::delete('/specialties/{specialty}', [SpecialtyController::class, 'destroy'])->name('specialties');
 
     //   Route::post('/specialties', 'SpecialtyController@store');
 });
