@@ -19,17 +19,21 @@ class SpecialtyController extends Controller
         return view('specialties.create');
     }
 
-    public function store(Request $request)
+    private function performvalidation(Request $request)
     {
         $rules = ['name' => 'required|min:3', 'description' => 'required'];
         $this->validate($request, $rules);
+    }
+    public function store(Request $request)
+    {
 
+        $this->performvalidation($request);
         $specialty = new Specialty;
         $specialty->name = $request->input('name');
         $specialty->description = $request->input('description');
         $specialty->save();
-
-        return redirect('/specialties');
+        $notification = 'The specialty has been registered succesfully';
+        return redirect('/specialties')->with(compact('notification'));
     }
 
     public function edit(Specialty $specialty)
@@ -39,19 +43,22 @@ class SpecialtyController extends Controller
     }
     public function update(Request $request, Specialty $specialty)
     {
-        $rules = ['name' => 'required|min:3', 'description' => 'required'];
-        $this->validate($request, $rules);
+        $this->performvalidation($request);
+
 
         $specialty->name = $request->input('name');
         $specialty->description = $request->input('description');
         $specialty->save();
 
-        return redirect('/specialties');
+        $notification = 'The specialty has been edited succesfully';
+        return redirect('/specialties')->with(compact('notification'));
     }
 
     public function destroy(Specialty $specialty)
     {
+        $deletedname = $specialty->name;
         $specialty->delete();
-        return redirect('/specialties');
+        $deleted = 'The specialty ' . $deletedname . ' has been deleted succesfully';
+        return redirect('/specialties')->with(compact('deleted'));
     }
 }

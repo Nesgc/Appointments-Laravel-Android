@@ -2,10 +2,23 @@
     <div class="px-6 pt-16 flex justify-end"><a href="{{ url('specialties/create') }}" type="button"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
             Add new</a>
-
-
     </div>
+    @if (session('notification'))
+        <div class="mx-5 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+            role="alert">
+            <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+            {{ session('notification') }}
+        </div>
+    @endif
 
+    @if (session('deleted'))
+        <div class="mx-6 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            role="alert">
+            <span class="font-medium">Danger alert!</span> Change a few things up and try submitting again.
+
+            {{ session('deleted') }}
+        </div>
+    @endif
     <div class="px-6 ">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
