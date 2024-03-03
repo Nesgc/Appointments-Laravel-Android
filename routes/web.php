@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
@@ -41,4 +42,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::delete('/specialties/{specialty}', [SpecialtyController::class, 'destroy'])->name('specialties');
 
     //   Route::post('/specialties', 'SpecialtyController@store');
+
+    //doctors
+    Route::resource('doctors', DoctorController::class);
 });
